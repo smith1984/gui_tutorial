@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class DateUtil {
+class DateUtil {
 
     private static final String DATE_PATTERN = "dd.MM.yyyy";
 
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern(DATE_PATTERN);
 
-    public static String format(LocalDate date) {
+    static String format(LocalDate date) {
         if (date == null) {
             return null;
         }
@@ -19,7 +19,7 @@ public class DateUtil {
     }
 
 
-    private static LocalDate parse(String dateString) {
+    static LocalDate parse(String dateString) {
         try {
             return DATE_FORMATTER.parse(dateString, LocalDate::from);
         } catch (DateTimeParseException e) {
@@ -27,7 +27,7 @@ public class DateUtil {
         }
     }
 
-    public static boolean validDate(String dateString) {
+    static boolean validDate(String dateString) {
 
         return DateUtil.parse(dateString) != null;
     }
